@@ -1,26 +1,3 @@
-configurations {
-    myconf
-
-    myconf.incoming.beforeResolve {
-        println "resolving myconf"
-    }
-}
-
-dependencies {
-    myconf "junit:junit:4.12"
-}
-
-abstract class MyTask extends DefaultTask {
-    @InputFiles
-    abstract ConfigurableFileCollection getClasspath()
-
-    @TaskAction
-    void printIt() {
-        println classpath.files
-    }
-}
-
-task mytask(type: MyTask) {
-    classpath.from(configurations.myconf)
+task mytask {
     enabled = false
 }
